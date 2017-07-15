@@ -7,7 +7,7 @@ int main(void) {
 
   int sockfd;
   int port = 31337;
-  char host[] = "127.0.0.1";
+  char host[] = "127.31.33.07";
   struct sockaddr_in addr;
 
   sockfd = socket(AF_INET, SOCK_STREAM, 0);

