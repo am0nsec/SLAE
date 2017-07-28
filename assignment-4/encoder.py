@@ -8,11 +8,9 @@ shellcode += '\xcd\x80'
 key = 42
 opcode = []  
 opcode.append(0x66)
-hexchain = ''
 asm = 'shellcode: db '
 index = 0
 
-print "Encode!"
 for x in bytearray(shellcode):
  	byte  = (x + key) % 256
 
@@ -25,5 +23,4 @@ for x in bytearray(shellcode):
 	index += 1
 
 print 'Lenght shellcode: %d' % len(shellcode)
-print hexchain
 print asm
