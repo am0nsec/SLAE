@@ -21,7 +21,6 @@ void swap(unsigned char *one, unsigned char *two) {
 	*two = tmp;
 }
 
-
 int initialize(void) {
 	int x;
 
@@ -33,7 +32,6 @@ int initialize(void) {
 	return 1;
 }
 
-
 int key_sheduling(unsigned char *key, int lenKey) {
 	for (i = 0; i < BYTE_ARRAY; i++) {
 		j = (j + s[i] + key[i % lenKey]) % BYTE_ARRAY;
@@ -42,7 +40,6 @@ int key_sheduling(unsigned char *key, int lenKey) {
 
 	i = j = 0;
 }
-
 
 char pseudo_random(void) {
 	i = (i + 1) % BYTE_ARRAY;
@@ -57,7 +54,6 @@ void encoder(int shellcodeLenght) {
 
 	for (x = 0; x < shellcodeLenght; x++) {
 		shellcode[x] = shellcode[x] + 10 ;
-		//printf("\\x%.2x", shellcode[x]);
 	}
 }
 
@@ -70,11 +66,11 @@ void main(int argc, char **argv){
 	int lenKey = strlen(key);
 	int count;
 
-	printf("[+] Shellcode encding ...\n");
+	printf("[+] Encoding shellcode ...\n");
 	encoder(shellcodeLenght);
 	printf("[+] Shellcode encoded\n");
 
-	printf("[*] Start decrypting shellcode..\n");
+	printf("[*] Start encrypting shellcode..\n");
 	printf("[*] Initializing bytearray\n");
 	initialize();
 
@@ -90,7 +86,5 @@ void main(int argc, char **argv){
 		printf("\\x%.2x", encryptedByte);
 
 	}
-	printf("\n[+] shellcode encrypted\n");
-	
-
-	}
+	printf("\n[+] Shellcode encrypted\n");
+}
